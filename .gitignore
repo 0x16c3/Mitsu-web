@@ -1,0 +1,7 @@
+/.vscode
+/sample.json
+/__pycache__
+/tmp
+/api/__pycache__
+
+wsgi.py
