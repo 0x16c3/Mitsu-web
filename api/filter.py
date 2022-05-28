@@ -9,7 +9,10 @@ import urllib.request
 @cache.cached(timeout=86400)
 def adult(mode, id):
     if mode not in ["media", "cover", "banner"]:
-        return throw_error(title="Unknown mode", error="Please specify either `media`, `cover` or `banner`")
+        return throw_error(
+            title="Unknown mode",
+            error="Please specify either `media`, `cover` or `banner`",
+        )
 
     if mode in ["cover", "banner"]:
 
@@ -101,6 +104,6 @@ def adult(mode, id):
             radius=7,
             fill=ImageColor.getrgb("#EC294B"),
         )
-        draw.text((img.size[0] - padding - size[0], padding - 3), label, font=font)
+        draw.text((img.size[0] - padding - size[0], padding + 8), label, font=font)
 
         return serve_image(img)

@@ -35,7 +35,7 @@ def character(id: int):
     )
     img_cover = img_cover.filter(ImageFilter.GaussianBlur(15))
     img_cover = Image.alpha_composite(
-        img_cover, Image.new("RGBA", img_cover.size, ImageColor.getrgb("#00000070"))
+        img_cover, Image.new("RGBA", img_cover.size, ImageColor.getrgb("#1A1A1AB3"))
     )
     image.paste(img_cover, (392 - round(img_cover.size[0] / 2), 0))
 
@@ -91,21 +91,27 @@ def character(id: int):
                 (60, padding),
                 result.name.first,
                 font=font,
-                fill=ImageColor.getrgb("black") if blur else ImageColor.getrgb("white"),
+                fill=ImageColor.getrgb("#000000B3")
+                if blur
+                else ImageColor.getrgb("white"),
             )
         if hasattr(result.name, "last"):
             c.text(
                 (60, padding + 72),
                 result.name.last,
                 font=font,
-                fill=ImageColor.getrgb("black") if blur else ImageColor.getrgb("white"),
+                fill=ImageColor.getrgb("#000000B3")
+                if blur
+                else ImageColor.getrgb("white"),
             )
 
         c.text(
             (60, padding + 72 * 2 + 12),
             str(result.favorites) + " Favorites",
             font=font_reg,
-            fill=ImageColor.getrgb("black") if blur else ImageColor.getrgb("#FFAEBC"),
+            fill=ImageColor.getrgb("#000000B3")
+            if blur
+            else ImageColor.getrgb("#FFAEBC"),
         )
 
         if blur:
